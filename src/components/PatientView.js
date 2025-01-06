@@ -17,7 +17,7 @@ const PatientRegistration = () => {
         setError(null); // Reset error before starting new fetch
 
         try {
-            const response = await fetch(`http://localhost:13121/phi/get/${aadhaarID}`); // Update with actual API endpoint
+            const response = await fetch(`http://localhost:23121/phi/get/${aadhaarID}`); // Update with actual API endpoint
 
             if (!response.ok) {
                 throw new Error("No patient found with the provided ABHA ID");

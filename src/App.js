@@ -6,6 +6,7 @@ import PatientRegistrationForm from "./components/PatientRegistrationForm";
 import ReportGenerationForm from "./components/ReportGenerationForm";
 import PatientView from "./components/PatientView";
 import ReportsView from "./components/ReportsView";
+import PHRView from "./components/PHRView";
 
 function App() {
     return (
@@ -26,6 +27,9 @@ function App() {
                         <li>
                             <Link to="/report-view">Patient Reports View</Link>
                         </li>
+                        <li>
+                            <Link to="/phr-view">PHR View</Link>
+                        </li>
                     </ul>
                 </nav>
 
@@ -34,6 +38,7 @@ function App() {
                     <Route path="/phi-view" element={<PatientView />} />
                     <Route path="/report" element={<ReportGenerationForm />} />
                     <Route path="/report-view" element={<ReportsView />} />
+                    <Route path="/phr-view" element={<PHRView />} />
                 </Routes>
             </div>
         </Router>
