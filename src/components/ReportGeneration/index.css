@@ -1,0 +1,185 @@
+/* ReportGenerationForm.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.form-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.form-container:hover {
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.report-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.4);
+    outline: none;
+}
+
+.input-group input::placeholder,
+.input-group select::placeholder,
+.input-group textarea::placeholder {
+    color: #aaa;
+}
+
+.array-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.array-item input {
+    flex: 1;
+    padding: 10px;
+}
+
+.add-btn,
+.remove-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.add-btn:hover,
+.remove-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.add-btn:active,
+.remove-btn:active {
+    transform: translateY(1px);
+}
+
+.submit-btn {
+    padding: 14px 30px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+.physical-examination h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.lab-test-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.lab-test-item input {
+    flex: 1;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #007bff;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .report-form {
+        gap: 15px;
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+        font-size: 0.95rem;
+    }
+
+    .submit-btn,
+    .add-btn,
+    .remove-btn {
+        font-size: 1rem;
+    }
+}

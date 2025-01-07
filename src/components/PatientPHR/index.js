@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import sha256 from "sha256";
-import "./ReportsView.css";
+
+import "../ReportsView/index.css";
 
 const PatientReports = () => {
     const [aadhaarID, setAadhaarID] = useState(""); // To store Aadhaar ID input
@@ -22,7 +23,7 @@ const PatientReports = () => {
         setError(null); // Reset error before starting new fetch
 
         try {
-            const response = await fetch(`http://localhost:23121/phi/assemble/${aadhaarID}`); // Update with actual API endpoint
+            const response = await fetch(`http://localhost:23121/phi/assemble/${aadhaarID}/${aadhaarID}`); // Update with actual API endpoint
 
             if (!response.ok) {
                 throw new Error("No reports found for the provided ABHA ID");
@@ -57,6 +58,9 @@ const PatientReports = () => {
                 const resp = integ[data.EMR[i].local];
                 data.EMR[i]["integrity_hash"] = resp.EMRs[state_index];
                 state_index += 1;
+                const color =
+                    sha256(JSON.stringify(data.EMR[i])) === data.EMR[i].integrity_hash ? "#4caf50" : "#e57373";
+                data.EMR[i]["integrity_style"] = { color };
             }
             // setIntegrities(integ);
             setPHR(data);
@@ -70,7 +74,7 @@ const PatientReports = () => {
 
     return (
         <div className="patient-reports">
-            <h2>Patient PHR Reports</h2>
+            <h2>Patient Health Records</h2>
             {/* Aadhaar ID input */}
             <div className="input-section">
                 <label htmlFor="aadhaarID">Enter ABHA ID:</label>
@@ -82,13 +86,13 @@ const PatientReports = () => {
                     placeholder="Enter ABHA ID"
                 />
                 <button onClick={fetchMedicalRecords} disabled={loading}>
-                    {loading ? "Loading..." : "Fetch Medical Records"}
+                    {loading ? "Loading..." : "Fetch Patient Health Records"}
                 </button>
             </div>
             {/* Error Message */}
             {error && <div className="error-message">{error}</div>}
             {/* Medical Records Display */}
-            {PHR && PHR.EMR && PHR.EMR.length > 0 ? (
+            {PHR ? (
                 <div>
                     <div className="patient-info">
                         <p>
@@ -117,11 +121,15 @@ const PatientReports = () => {
                         </p>
                     </div>
                     <div className="medical-records">
+                        {!PHR.EMR || PHR.EMR.length === 0 ? "No records" : ""}
                         {PHR.EMR.map((record, index) => (
                             <div key={index} className="medical-record">
                                 <h4>
-                                    Integrity: {record.integrity_hash} Match:{" "}
-                                    {sha256(JSON.stringify(record.record)) === record.integrity_hash ? "True" : "False"}
+                                    Hospital ID: {record.local} @ State: {record.state}
+                                </h4>
+                                <h4 style={record.integrity_style}>
+                                    Integrity:{" "}
+                                    {sha256(JSON.stringify(record.record)) === record.integrity_hash ? "Pass" : "Fail"}
                                 </h4>
                                 <h3>
                                     Record {index + 1} - {new Date(record.record.Timestamp).toLocaleString()}

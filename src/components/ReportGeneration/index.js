@@ -1,7 +1,8 @@
 // src/components/ReportGenerationForm.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./ReportGenerationForm.css"; // Importing external CSS file for styling
+
+import "./index.css"; // Importing external CSS file for styling
 
 const ReportGenerationForm = () => {
     const [aadhaarID, setAadhaarID] = useState(""); // To store Aadhaar ID input
@@ -110,6 +111,9 @@ const ReportGenerationForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        formData.Timestamp = new Date().valueOf();
+
         console.log("Medical Report Data:", formData);
         try {
             const res = await fetch(`http://localhost:11121/emr/add-record/${aadhaarID}`, {
@@ -146,7 +150,7 @@ const ReportGenerationForm = () => {
                 />
             </div>
             <form onSubmit={handleSubmit} className="report-form">
-                <div className="input-group">
+                {/* <div className="input-group">
                     <label htmlFor="Timestamp">Timestamp</label>
                     <input
                         type="number"
@@ -156,7 +160,7 @@ const ReportGenerationForm = () => {
                         onChange={handleInputChange}
                         required
                     />
-                </div>
+                </div> */}
 
                 <div className="input-group">
                     <label htmlFor="DoctorID">Doctor ID</label>

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-import "./ReportsView.css";
+import "./index.css";
 
 const PatientReports = () => {
     const [aadhaarID, setAadhaarID] = useState(""); // To store Aadhaar ID input
+    const [readBy, setReadBy] = useState(""); // To store Aadhaar ID input
     const [medicalRecords, setMedicalRecords] = useState(null); // To store fetched medical records
     const [loading, setLoading] = useState(false); // Loading state
     const [error, setError] = useState(null); // To store errors during fetch
@@ -19,7 +20,7 @@ const PatientReports = () => {
         setError(null); // Reset error before starting new fetch
 
         try {
-            const response = await fetch(`http://localhost:11121/emr/get/${aadhaarID}`); // Update with actual API endpoint
+            const response = await fetch(`http://localhost:11121/emr/get/${aadhaarID}/${readBy}`); // Update with actual API endpoint
 
             if (!response.ok) {
                 throw new Error("No reports found for the provided Aadhaar ID");
@@ -41,6 +42,13 @@ const PatientReports = () => {
             {/* Aadhaar ID input */}
             <div className="input-section">
                 <label htmlFor="aadhaarID">Enter ABHA ID:</label>
+                <input
+                    type="text"
+                    id="readBy"
+                    value={readBy}
+                    onChange={(e) => setReadBy(e.target.value)} // Update Aadhaar ID on input change
+                    placeholder="Enter ABDM ID"
+                />
                 <input
                     type="text"
                     id="aadhaarID"

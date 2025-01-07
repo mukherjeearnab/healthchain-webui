@@ -1,4 +1,4 @@
-/* src/App.css */
+/* src/components/PatientRegistrationForm.css */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,64 +7,65 @@
 
 body {
     font-family: "Roboto", Arial, sans-serif;
-    background-color: #fafafa; /* Light background for contrast */
+    background-color: #f4f7fa; /* Light background for contrast */
     color: #333;
     line-height: 1.6;
 }
 
-.App {
-    padding: 40px;
-    max-width: 700px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 10px;
+.form-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+h2 {
     font-size: 2rem;
     text-align: center;
     color: #1976d2; /* Material blue color */
-    margin-bottom: 20px;
-}
-
-.form-container {
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
 }
 
-label {
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+form label {
     font-size: 1rem;
     font-weight: 600;
     color: #555; /* Softer label color */
-    margin-bottom: 5px;
 }
 
-input,
-select {
-    width: 100%;
+form input,
+form select {
     padding: 12px;
-    margin-bottom: 15px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    background-color: #f5f5f5;
     font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #f5f5f5;
     color: #333;
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
-input:focus,
-select:focus {
+form input:focus,
+form select:focus {
     border-color: #1976d2; /* Material blue */
     box-shadow: 0 0 4px rgba(25, 118, 210, 0.4);
     outline: none;
 }
 
-input::placeholder,
-select::placeholder {
+form input::placeholder,
+form select::placeholder {
     color: #888;
 }
 
@@ -73,10 +74,15 @@ button {
     color: white;
     padding: 12px 20px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+button:disabled {
+    background-color: #b0bec5; /* Disabled button color */
+    cursor: not-allowed;
 }
 
 button:hover {
@@ -88,36 +94,46 @@ button:active {
     transform: translateY(1px);
 }
 
-div {
-    margin-bottom: 20px;
+button:focus {
+    outline: none;
 }
 
-div div {
+.link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #1976d2;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Error message styling */
+.error-message {
+    margin-top: 20px;
     color: #e57373; /* Material red for error messages */
-    font-size: 0.875rem;
+    font-size: 1rem;
+    text-align: center;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .App {
+    .form-container {
         padding: 20px;
     }
 
-    h1 {
+    h2 {
         font-size: 1.5rem;
-    }
-
-    label {
-        font-size: 0.9rem;
-    }
-
-    input,
-    select {
-        font-size: 0.95rem;
     }
 
     button {
         font-size: 1rem;
         padding: 10px 16px;
+    }
+
+    form {
+        grid-template-columns: 1fr; /* Stack inputs on smaller screens */
     }
 }

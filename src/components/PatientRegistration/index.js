@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import "./index.css";
+
 const PatientRegistrationForm = () => {
     const [formData, setFormData] = useState({
         AadhaarID: "",
@@ -37,11 +39,11 @@ const PatientRegistrationForm = () => {
             });
 
             if (!res.ok) {
-                throw new Error("Network response was not ok");
+                throw new Error("Network response was NOT ok!");
             }
 
-            const jsonResponse = await res.json();
-            alert(jsonResponse); // Save response data to state
+            console.log(await res.json());
+            alert("Patient registered Successfully!"); // Save response data to state
         } catch (error) {
             alert(error.message); // Save error message to state
         }
