@@ -24,6 +24,22 @@ const PatientReports = () => {
         setError(null); // Reset error before starting new fetch
 
         try {
+            setPHR(null);
+            const consent_res = await fetch(`http://localhost:23121/consent/check/${aadhaarID}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                },
+                body: JSON.stringify({
+                    Candidate: readBy,
+                }),
+            });
+            const { concentGranted } = await consent_res.json();
+
+            if (!concentGranted)
+                throw new Error(`ABDM ID ${readBy} does not have consent to access EMR of ${aadhaarID}!`);
+
             const response = await fetch(`http://localhost:23121/phi/assemble/${aadhaarID}/${readBy}`); // Update with actual API endpoint
 
             if (!response.ok) {

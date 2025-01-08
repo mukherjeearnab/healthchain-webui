@@ -10,6 +10,7 @@ import HospitalHome from "./components/SectionPages/Hospital";
 import DebugHome from "./components/SectionPages/Debug";
 
 import ExternalPHR from "./components/ExternalPHR";
+import RequestConsent from "./components/RequestConsent";
 
 import PatientPHR from "./components/PatientPHR";
 import PatientConsent from "./components/PatientConsent";
@@ -34,9 +35,10 @@ function App() {
                     <Route path="/debug" element={<DebugHome />} />
 
                     <Route path="/master/view-phr" element={<ExternalPHR />} />
+                    <Route path="/master/request-consent" element={<RequestConsent />} />
 
                     <Route path="/patient/view-phr" element={<PatientPHR />} />
-                    {/* <Route path="/patient/grant-consent" element={<PatientConsent />} /> */}
+                    <Route path="/patient/grant-consent" element={<PatientConsent />} />
                     <Route path="/patient/view-logs" element={<PatientLogs />} />
 
                     <Route path="/hospital/view-emr" element={<ReportsView />} />

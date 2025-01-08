@@ -10,6 +10,9 @@ function App() {
                     <li>
                         <Link to="/master/view-phr">View Patient PHR</Link>
                     </li>
+                    <li>
+                        <Link to="/master/request-consent">Request Consent from Patient</Link>
+                    </li>
                 </ul>
             </nav>
         </div>
