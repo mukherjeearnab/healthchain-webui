@@ -62,7 +62,16 @@ const RequestConsent = () => {
 
             {/* Input Fields */}
             <div className="input-section">
-                <label htmlFor="aadharID">Enter ABHA ID:</label>
+                <label htmlFor="candidateID">Enter Your ABDM ID:</label>
+                <input
+                    type="text"
+                    id="candidateID"
+                    value={candidateID}
+                    onChange={handleCandidateIDChange}
+                    placeholder="Enter ABDM ID"
+                />
+
+                <label htmlFor="aadharID">Enter Patient's ABHA ID:</label>
                 <input
                     type="text"
                     id="aadharID"
@@ -71,14 +80,6 @@ const RequestConsent = () => {
                     placeholder="Enter ABHA ID"
                 />
 
-                <label htmlFor="candidateID">Enter ABDM ID:</label>
-                <input
-                    type="text"
-                    id="candidateID"
-                    value={candidateID}
-                    onChange={handleCandidateIDChange}
-                    placeholder="Enter ABDM ID"
-                />
                 <label htmlFor="candidateID">Request Message / Comment:</label>
                 <input
                     type="text"

@@ -140,7 +140,7 @@ const ReportGenerationForm = () => {
         <div className="form-container">
             <h2>Medical Report Generation</h2>
             <div className="input-section">
-                <label htmlFor="aadhaarID">Enter ABHA ID:</label>
+                <label htmlFor="aadhaarID">Enter Patient ABHA ID:</label>
                 <input
                     type="text"
                     id="aadhaarID"
@@ -163,11 +163,12 @@ const ReportGenerationForm = () => {
                 </div> */}
 
                 <div className="input-group">
-                    <label htmlFor="DoctorID">Doctor ID</label>
+                    <label htmlFor="DoctorID">Doctor (ABDM) ID</label>
                     <input
                         type="text"
                         id="DoctorID"
                         name="DoctorID"
+                        placeholder="Doctor's ABDM ID"
                         value={formData.DoctorID}
                         onChange={handleInputChange}
                         required
@@ -182,6 +183,7 @@ const ReportGenerationForm = () => {
                                 type="text"
                                 name={`Conditions[${index}]`}
                                 value={condition}
+                                placeholder={`Condition ${index + 1}`}
                                 onChange={(e) => {
                                     const updatedConditions = [...formData.Conditions];
                                     updatedConditions[index] = e.target.value;
@@ -210,6 +212,7 @@ const ReportGenerationForm = () => {
                                 type="text"
                                 name={`Prescription[${index}]`}
                                 value={prescription}
+                                placeholder={`Prescription ${index + 1}`}
                                 onChange={(e) => {
                                     const updatedPrescription = [...formData.Prescription];
                                     updatedPrescription[index] = e.target.value;
@@ -318,14 +321,14 @@ const ReportGenerationForm = () => {
                                 placeholder="Test Type"
                                 required
                             />
-                            <input
+                            {/* <input
                                 type="text"
                                 name="HealthWorkerID"
                                 value={test.HealthWorkerID}
                                 onChange={(e) => handleArrayChange(e, "LabTests", index)}
                                 placeholder="Health Worker ID"
                                 required
-                            />
+                            /> */}
                             <input
                                 type="text"
                                 name="Results"

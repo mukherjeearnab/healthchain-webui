@@ -59,7 +59,7 @@ const PatientReports = () => {
 
             {/* Aadhaar ID input */}
             <div className="input-section">
-                <label htmlFor="aadhaarID">Enter ABHA ID:</label>
+                <label htmlFor="aadhaarID">Enter Your ABDM ID:</label>
                 <input
                     type="text"
                     id="readBy"
@@ -67,6 +67,8 @@ const PatientReports = () => {
                     onChange={(e) => setReadBy(e.target.value)} // Update Aadhaar ID on input change
                     placeholder="Enter ABDM ID"
                 />
+
+                <label htmlFor="aadhaarID">Enter Patient ABHA ID:</label>
                 <input
                     type="text"
                     id="aadhaarID"

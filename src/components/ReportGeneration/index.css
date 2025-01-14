@@ -79,11 +79,17 @@ h2 {
     display: flex;
     gap: 12px;
     align-items: center;
+    flex-direction: row;
 }
 
 .array-item input {
     flex: 1;
     padding: 10px;
+}
+
+.array-item input,
+button {
+    margin: 0;
 }
 
 .add-btn,
@@ -98,10 +104,18 @@ h2 {
     transition: background-color 0.3s ease, transform 0.2s ease-in-out;
 }
 
+.remove-btn {
+    background-color: #ff3c00;
+}
+
 .add-btn:hover,
 .remove-btn:hover {
     background-color: #0056b3;
     transform: translateY(-2px);
+}
+
+.remove-btn:hover {
+    background-color: #b30012;
 }
 
 .add-btn:active,
