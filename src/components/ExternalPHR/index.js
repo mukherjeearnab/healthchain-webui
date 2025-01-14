@@ -76,7 +76,7 @@ const PatientReports = () => {
                 data.EMR[i]["integrity_hash"] = resp.EMRs[state_index];
                 state_index += 1;
                 const color =
-                    sha256(JSON.stringify(data.EMR[i])) === data.EMR[i].integrity_hash ? "#4caf50" : "#e57373";
+                    sha256(JSON.stringify(data.EMR[i].record)) === data.EMR[i].integrity_hash ? "#4caf50" : "#e57373";
                 data.EMR[i]["integrity_style"] = { color };
             }
             // setIntegrities(integ);
@@ -152,7 +152,7 @@ const PatientReports = () => {
                                     Hospital ID: {record.local} @ State: {record.state}
                                 </h4>
                                 <h4 style={record.integrity_style}>
-                                    Integrity:{" "}
+                                    Integrity:
                                     {sha256(JSON.stringify(record.record)) === record.integrity_hash ? "Pass" : "Fail"}
                                 </h4>
                                 <h3>
@@ -202,9 +202,9 @@ const PatientReports = () => {
                                                     <p>
                                                         <strong>Test Type:</strong> {test.TestType}
                                                     </p>
-                                                    <p>
+                                                    {/* <p>
                                                         <strong>Health Worker ID:</strong> {test.HealthWorkerID}
-                                                    </p>
+                                                    </p> */}
                                                     <p>
                                                         <strong>Results:</strong> {test.Results}
                                                     </p>

@@ -136,9 +136,9 @@ const PatientReports = () => {
                                                 <p>
                                                     <strong>Test Type:</strong> {test.TestType}
                                                 </p>
-                                                <p>
+                                                {/* <p>
                                                     <strong>Health Worker ID:</strong> {test.HealthWorkerID}
-                                                </p>
+                                                </p> */}
                                                 <p>
                                                     <strong>Results:</strong> {test.Results}
                                                 </p>

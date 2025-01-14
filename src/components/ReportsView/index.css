@@ -178,3 +178,11 @@ ul li {
         font-size: 0.95rem;
     }
 }
+
+.integrity-pass {
+    color: #4caf50;
+}
+
+.integrity-fail {
+    color: #e57373;
+}

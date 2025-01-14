@@ -129,8 +129,8 @@ const ReportGenerationForm = () => {
                 throw new Error("Network response was not ok");
             }
 
-            const jsonResponse = await res.json();
-            alert(jsonResponse); // Save response data to state
+            console.log(await res.json());
+            alert("Report Generated Successfully!"); // Save response data to state
         } catch (error) {
             alert(error.message); // Save error message to state
         }

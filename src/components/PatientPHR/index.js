@@ -59,8 +59,11 @@ const PatientReports = () => {
                 data.EMR[i]["integrity_hash"] = resp.EMRs[state_index];
                 state_index += 1;
                 const color =
-                    sha256(JSON.stringify(data.EMR[i])) === data.EMR[i].integrity_hash ? "#4caf50" : "#e57373";
-                data.EMR[i]["integrity_style"] = { color };
+                    sha256(JSON.stringify(data.EMR[i].record)) === data.EMR[i]["integrity_hash"]
+                        ? "integrity-pass"
+                        : "integrity-fail";
+                data.EMR[i]["integrity_style"] = color;
+                // console.log(data.EMR);
             }
             // setIntegrities(integ);
             setPHR(data);
@@ -127,7 +130,7 @@ const PatientReports = () => {
                                 <h4>
                                     Hospital ID: {record.local} @ State: {record.state}
                                 </h4>
-                                <h4 style={record.integrity_style}>
+                                <h4 className={record.integrity_style}>
                                     Integrity:{" "}
                                     {sha256(JSON.stringify(record.record)) === record.integrity_hash ? "Pass" : "Fail"}
                                 </h4>
@@ -178,9 +181,9 @@ const PatientReports = () => {
                                                     <p>
                                                         <strong>Test Type:</strong> {test.TestType}
                                                     </p>
-                                                    <p>
+                                                    {/* <p>
                                                         <strong>Health Worker ID:</strong> {test.HealthWorkerID}
-                                                    </p>
+                                                    </p> */}
                                                     <p>
                                                         <strong>Results:</strong> {test.Results}
                                                     </p>
